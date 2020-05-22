@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 fillings="";
                 bevergare="";
+                if(radioButton.isChecked()) size= radioButton.getText().toString();
+                if(radioButton2.isChecked()) size= radioButton2.getText().toString();
+                if(radioButton3.isChecked()) tortilla= radioButton3.getText().toString();
+                if(radioButton4.isChecked()) tortilla= radioButton4.getText().toString();
                 for (int i=0; i< checkBoxes.size();i++){
                     CheckBox cb= checkBoxes.get(i);
                     if (cb.isChecked()){
@@ -92,13 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (fillings=="" && bevergare=="") Toast.makeText(MainActivity.this,"You haven't chosen any food yet",Toast.LENGTH_SHORT).show();
                 else {
-                    if(radioButton.isChecked()) size= radioButton.getText().toString();
-                    if(radioButton2.isChecked()) size= radioButton2.getText().toString();
-                    if(radioButton3.isChecked()) tortilla= radioButton3.getText().toString();
-                    if(radioButton4.isChecked()) tortilla= radioButton4.getText().toString();
+
                     if(size == null || tortilla == null) Toast.makeText(MainActivity.this,"You have not selected the type of food",Toast.LENGTH_SHORT).show();
-                    if(size != null || tortilla != null){
-                        Intent intent = new Intent(Intent.ACTION_SENDTO,             Uri.parse("sms:" + "0799554257"));
+                   else{
+                        Intent intent = new Intent(Intent.ACTION_SENDTO,             Uri.parse("sms:" + "113"));
                         intent.putExtra("sms_body","I want a "+size+" tacos.Tortilla "+tortilla+" Fillings:"+fillings+" Bevergare:"+bevergare+". Thank you!");
                         startActivity(intent);
                     }
