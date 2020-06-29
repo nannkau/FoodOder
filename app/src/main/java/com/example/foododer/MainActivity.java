@@ -84,14 +84,14 @@ public class MainActivity extends AppCompatActivity {
                     CheckBox cb= checkBoxes.get(i);
                     if (cb.isChecked()){
 //                        fillings.concat(cb.getText().toString()+",");
-                        fillings=fillings+cb.getText().toString()+",";
+                        fillings=fillings+"\n +"+cb.getText().toString();
                     }
                 }
                 for (int i=0; i< checkBoxes1.size();i++){
                     CheckBox cb1= checkBoxes1.get(i);
                     if (cb1.isChecked()){
 //                        bevergare.concat(cb.getText().toString()+",");
-                        bevergare=bevergare+cb1.getText().toString()+",";
+                        bevergare=bevergare+"\n +"+cb1.getText().toString();
                     }
                 }
                 if (fillings=="" && bevergare=="") Toast.makeText(MainActivity.this,"You haven't chosen any food yet",Toast.LENGTH_SHORT).show();
@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if(size == null || tortilla == null) Toast.makeText(MainActivity.this,"You have not selected the type of food",Toast.LENGTH_SHORT).show();
                    else{
-                        Intent intent = new Intent(Intent.ACTION_SENDTO,             Uri.parse("sms:" + "113"));
-                        intent.putExtra("sms_body","I want a "+size+" tacos.Tortilla "+tortilla+" Fillings:"+fillings+" Bevergare:"+bevergare+". Thank you!");
+                        Intent intent = new Intent(Intent.ACTION_SENDTO,             Uri.parse("sms:" + "0799554257"));
+                        intent.putExtra("sms_body","I want a "+size+" tacos\nTortilla: "+tortilla+"\nFillings:"+fillings+"\nBevergare:"+bevergare+"\nThank you!");
                         startActivity(intent);
                     }
 
